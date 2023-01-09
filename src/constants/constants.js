@@ -17,8 +17,9 @@ const constants = {
         ADD_MENU: "/menu/add",
 
         TABLE: "/table",
-        ADD_TABLE: "/table/add"
+        ADD_TABLE: "/table/add",
 
+        TRANSACTION: "/transaction"
     }
 }
 

@@ -12,6 +12,7 @@ import authRoutes from "./routes/authRoutes";
 import ProtectedRoutes from "./components/ProtectedRoutes";
 import menuRoute from "./routes/menuRoute";
 import tableRoute from "./routes/tableRoute";
+import transactionRoute from "./routes/transactionRoute";
 
 const {ROUTES} = constants;
 
@@ -20,7 +21,7 @@ const navigationConfigs = createBrowserRouter([
     {
         path: ROUTES.DASHBOARD,
         element: <ProtectedRoutes />,
-        children: [{ index: true, element: <Dashboard /> }, menuRoute, tableRoute]
+        children: [{ index: true, element: <Dashboard /> }, menuRoute, tableRoute, transactionRoute]
     },
     authRoutes,
 ])

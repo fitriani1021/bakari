@@ -23,7 +23,7 @@ const NavBarComp = () => {
         <Navbar bg="light" expand="light" sticky={"top"}>
             <Container>
                 <Col>
-                    <Navbar.Brand>WMB V1.0.0</Navbar.Brand>
+                    <Navbar.Brand href={constants.ROUTES.DASHBOARD}>WMB V1.0.0</Navbar.Brand>
                 </Col>
                 <Col className="col-3">
                     <StyledNav>

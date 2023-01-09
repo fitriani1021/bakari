@@ -7,11 +7,14 @@ const Dashboard = () => {
     const navigate = useNavigate();
     return(
         <StyledContainer className="justify-content-center">
+            <Button onClick={() => navigate(constants.ROUTES.TRANSACTION)}>Transaction Menu</Button>
+            <br />
+            <br />
+            <br />
             <h1>Welcome to Warung Makan Bahari</h1>
             <p className="lead">
                 Please choose menu on nav bar
             </p>
-            <Button onClick={() => navigate(constants.ROUTES.TRANSACTION)}>Transaction Menu</Button>
         </StyledContainer>
     )
 }

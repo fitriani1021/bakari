@@ -1,0 +1,38 @@
+{
+  "data": [
+    {
+      "tableId": "f639b9f5-1235-434e-b1f9-6024c1b88551a",
+      "tableNo": "A1",
+      "tableStatus": "available"
+    },
+    {
+      "tableId": "90510af0-a6e4-4aa6-908f-5a27813412c6a",
+      "tableNo": "A2",
+      "tableStatus": "available"
+    },
+    {
+      "tableId": "f639b9f5-1235-434e-b1f9-6024c1b88551b",
+      "tableNo": "B1",
+      "tableStatus": "available"
+    },
+    {
+      "tableId": "90510af0-a6e4-4aa6-908f-5a27813412c6b",
+      "tableNo": "B2",
+      "tableStatus": "unavailable"
+    },
+    {
+      "tableId": "f639b9f5-1235-434e-b1f9-6024c1b88551c",
+      "tableNo": "C1",
+      "tableStatus": "unavailable"
+    },
+    {
+      "tableId": "90510af0-a6e4-4aa6-908f-5a27813412c6c",
+      "tableNo": "C2",
+      "tableStatus": "available"
+    }
+  ],
+  "count": 6,
+  "totalPage": 2,
+  "page": 1,
+  "size": 3
+}

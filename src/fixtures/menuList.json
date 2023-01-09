@@ -1,0 +1,44 @@
+{
+  "data": [
+    {
+      "menuId": "1",
+      "menuName": "Nasi Goreng",
+      "price": 10000,
+      "category": "food"
+    },
+    {
+      "menuId": "2",
+      "menuName": "Mie Goreng",
+      "price": 10000,
+      "category": "food"
+    },
+    {
+      "menuId": "3",
+      "menuName": "Mie Rebus",
+      "price": 12000,
+      "category": "food"
+    },
+    {
+      "menuId": "4",
+      "menuName": "Iced Tea",
+      "price": 5000,
+      "category": "beverages"
+    },
+    {
+      "menuId": "5",
+      "menuName": "Iced Coffee",
+      "price": 8000,
+      "category": "beverages"
+    },
+    {
+      "menuId": "6",
+      "menuName": "Iced Milk Tea",
+      "price": 9000,
+      "category": "beverages"
+    }
+  ],
+  "count": 6,
+  "totalPage": 2,
+  "page": 1,
+  "size": 3
+}

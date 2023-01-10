@@ -20,5 +20,5 @@ export const addTable = (data) => {
 }
 
 export const deleteTable = (id) => {
-    return api.delete("/tables/git "+id)
+    return api.delete("/tables/"+id)
 }

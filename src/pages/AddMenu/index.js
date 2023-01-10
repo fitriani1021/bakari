@@ -4,24 +4,27 @@ import constants from "../../constants/constants";
 import {FormInput, StyledContainer} from "../../components";
 import {StyledTitle} from "./styles";
 import {Button, ButtonGroup, Form} from "react-bootstrap";
-import {addMenu} from "../../store/actions/menuAction";
-import {connect} from "react-redux";
+import useFetchMutation from "../../hooks/useFetchMutation";
+import useFetchQuery from "../../hooks/useFetchQuery";
+import {getMenuCategories} from "../../service/menuCategoryApi";
+import FormSelect from "../../components/FormSelect";
+import {addMenu} from "../../service/menuApi";
 
 const FORM_LIST = [
     {id: "menuName", label: "Menu Name", type: "text", placeholder: "Enter Menu Name"},
     {id: "price", label: "Price", type: "number", placeholder: "Enter Price"}
-    // {id: "category", label: "Category (Food/Beverages)", type: "text", placeholder: "Enter Food or Beverages"}
 ]
 
-const AddMenu = ({
-                     addMenu
-                 }) => {
+const AddMenu = () => {
     const {getter, setter} = useAddMenu();
     const navigate = useNavigate();
-
+    const {fetchMutation, loading} = useFetchMutation(
+        addMenu,
+        () => navigate(constants.ROUTES.MENU)
+    );
+    const {data: menuCategoryData} = useFetchQuery(getMenuCategories);
     const submitHandler = () => {
-        addMenu(getter)
-        navigate(constants.ROUTES.MENU)
+        fetchMutation(getter)
     }
 
     return (
@@ -38,18 +41,19 @@ const AddMenu = ({
                         key={item.id}
                     />
                 ))}
-                <Form.Label>Select Menu Category</Form.Label>
-                <Form.Select
-                    value={getter.category}
-                    onChange={setter.category}
-                >
-                    <option hidden>Select Category</option>
-                    <option value="food">Food</option>
-                    <option value="beverage">Beverage</option>
-                </Form.Select>
-                <br />
+                <FormSelect
+                    label="Menu Category"
+                    placeholder="Select Menu Category"
+                    onChange={setter.categoryId}
+                    value={getter.categoryId}
+                    values={menuCategoryData?.data?.map(
+                        (item) => ({
+                            id: item?.categoryId,
+                            label: item?.categoryName
+                        }))}
+                />
                 <ButtonGroup>
-                    <Button variant="success" onClick={submitHandler} disabled={getter.isDisable}>
+                    <Button variant="success" onClick={submitHandler} disabled={getter.isDisable || loading}>
                         Submit
                     </Button>
                     <Button variant="secondary" onClick={() => navigate(constants.ROUTES.MENU)}>
@@ -61,11 +65,4 @@ const AddMenu = ({
     )
 }
 
-const mapDispatchToProps = (dispatch) => ({
-    addMenu: menu => dispatch(addMenu(menu))
-})
-
-export default connect(
-    null,
-    mapDispatchToProps
-)(AddMenu);
+export default AddMenu;

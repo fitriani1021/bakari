@@ -3,20 +3,20 @@ import {onChangeText} from "../../utils/eventHandlers";
 
 const useAddTable = () => {
     const [tableNo, setTableNo] = React.useState("");
-    const [tableStatus, setTableStatus] = React.useState("");
+    const [statusId, setStatusId] = React.useState("");
     const [isDisable, setDisable] = React.useState(true);
 
-    const getter = {tableNo, tableStatus, isDisable};
+    const getter = {tableNo, statusId, isDisable};
     const setter = {
         tableNo: onChangeText(setTableNo),
-        tableStatus: onChangeText(setTableStatus)
+        statusId: onChangeText(setStatusId)
     }
 
     React.useEffect(() => {
-        if (tableNo && tableStatus) {
+        if (tableNo && statusId) {
             setDisable(false);
         } else setDisable(true)
-    }, [tableNo,tableStatus])
+    }, [tableNo,statusId])
 
     return {
         getter, setter

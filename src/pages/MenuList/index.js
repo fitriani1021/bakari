@@ -1,17 +1,20 @@
-import {connect, useDispatch} from "react-redux";
-import {deleteMenu} from "../../store/actions/menuAction";
 import {StyledListGroup} from "./styles";
 import withPaginationList from "../../hoc/withPaginationList";
 import constants from "../../constants/constants";
 import MenuItem from "./components/MenuItem";
+import useFetchMutation from "../../hooks/useFetchMutation";
+import {deleteMenu, getMenus} from "../../service/menuApi";
 
-const MenuList = ({data}) => {
-    const dispatch = useDispatch();
+const MenuList = ({data, refetch}) => {
+    const {fetchMutation: deleteMenuMutation} = useFetchMutation(
+        deleteMenu,
+        refetch
+    );
 
     const onDelete = (id) => () => {
         const isOk = window.confirm("Are you sure to delete this menu?");
         if (isOk) {
-            dispatch(deleteMenu(id));
+            deleteMenuMutation(id);
         }
     }
 
@@ -28,12 +31,8 @@ const MenuList = ({data}) => {
     )
 }
 
-const mapStateToProps = (state) => ({
-    listData: state.menus.menuList,
-    pagination: state.menus.pagination
-})
-
-export default connect(mapStateToProps)(withPaginationList(MenuList, {
+export default withPaginationList(MenuList, {
     label: "Menu",
-    routeToAdd: constants.ROUTES.ADD_MENU
-}));
+    routeToAdd: constants.ROUTES.ADD_MENU,
+    query: getMenus
+});

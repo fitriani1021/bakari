@@ -41,3 +41,10 @@
     transform: rotate(360deg);
   }
 }
+
+.statusAvail {
+  color: green;
+}
+.statusUnavail {
+  color: red;
+}
